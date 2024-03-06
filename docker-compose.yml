@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  server:
+    container_name: server
+    build: ./server
+    command: python3 app/main.py
+    ports:
+      - "90:90"
+    volumes:
+      - ./server:/app
+  user_api:
+    build: users_api/
+    ports:
+      - "8000:80"
+    volumes:
+      - ./users_api:/app
