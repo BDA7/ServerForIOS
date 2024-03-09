@@ -4,9 +4,8 @@ services:
   server:
     container_name: server
     build: ./server
-    command: python3 app/main.py
     ports:
-      - "90:90"
+      - "8080:90"
     volumes:
       - ./server:/app
   user_api:

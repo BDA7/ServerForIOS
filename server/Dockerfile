@@ -4,8 +4,9 @@ LABEL authors="danilabondarenko"
 
 WORKDIR /server
 
-EXPOSE 90
-
+COPY ./requirements.txt /server/requirements.txt
 COPY ./app /server/app
 
-CMD ["python3", "/server/app/main.py"]
+RUN pip install --no-cache-dir --upgrade -r /server/requirements.txt
+
+CMD ["uvicorn", "app.web_socket:app", "--host", "0.0.0.0", "--port", "90"]
